@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:13.5
+    environment:
+      - POSTGRES_USER=mainuser
+      - POSTGRES_PASSWORD=dev
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  adminer:
+    image: adminer
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+
+  api: 
+    build: ./api
+    container_name: api
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/app
+    tty: true
+    depends_on:
+      - postgres
+
+volumes:
+  postgres:
+
