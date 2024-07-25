@@ -21,7 +21,9 @@
   }
 
   main {
-    min-height: 85vh;
+    min-height: 92vh;
+    z-index: 1;
+    background-color: #fff;
   }
 
   :global(h1) {
