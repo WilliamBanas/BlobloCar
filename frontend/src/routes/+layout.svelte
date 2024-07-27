@@ -15,6 +15,12 @@
 </div>
 
 <style>
+
+  :global(body) {
+    font-family: "Open Sans Variable", sans-serif;
+  }
+
+
   .app {
     min-height: 100vh;
     background-color:cadetblue;

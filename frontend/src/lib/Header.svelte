@@ -1,9 +1,10 @@
 <script>
-  import menu from "./assets/burger-menu.png";
-  import search from "./assets/icon-chercher.png";
-  import add from "./assets/icon-plus.png";
+  import avatar from "./assets/icon-avatar.png";
+  import search from "./assets/icon-search.png";
+  import add from "./assets/icon-add.png";
   import logoWithoutText from "./assets/logoNoFont.png";
-  import rightArrow from "./assets/right-arrow.png";
+  import logoWithText from "./assets/logoFont.png";
+  import arrow from "./assets/icon-arrow.png";
 
   let sidebar = false;
   const handleSidebar = () => {
@@ -12,76 +13,129 @@
 </script>
 
 <header class="header">
-  <button class="nav-button" type="button" on:click={handleSidebar}>
-    <img src={menu} alt="" width="30px" />
-  </button>
+  <div class="header-container">
+    <div class="header-left">
+      <button class="sidebar-button" type="button" on:click={handleSidebar}>
+        <img class="avatar" src={avatar} alt="" />
+        <img class={sidebar ? "upArrow" : "downArrow"} src={arrow} alt="" />
+      </button>
+    </div>
 
-  <a href="/" class="main-logo">
-    <img src={logoWithoutText} alt="" width="50px" />
-  </a>
+    <a href="/" class="main-logo">
+      <img class="logo-mobile" src={logoWithoutText} alt="" width="40px" />
+      <img class="logo-desktop" src={logoWithText} alt="" width="200px" />
+    </a>
 
-  <div class="header-icons">
-    <button type="button">
-      <img src={search} alt="" width="30px" />
-    </button>
-    <button type="button">
-      <img src={add} alt="" width="30px" />
-    </button>
+    <div class="header-right">
+      <button type="button">
+        <img src={search} alt="" width="25px" />
+      </button>
+      <!-- <button type="button">
+        <img src={add} alt="" width="30px" />
+      </button> -->
+    </div>
+
+    <nav class={sidebar ? "nav" : "nav-hidden"}>
+      <a id="trip-button" class="nav-button" href="#">
+        <p>Nouveau trajet</p>
+        <img src={arrow} alt="" width="20px" />
+      </a>
+      <div class="nav-divider">
+        <hr />
+      </div>
+      <a class="nav-button" href="#">
+        <p>Inscription</p>
+        <img src={arrow} alt="" width="20px" />
+      </a>
+      <a class="nav-button" href="#">
+        <p>Connexion</p>
+        <img src={arrow} alt="" width="20px" />
+      </a>
+    </nav>
   </div>
-
-  <nav class={sidebar ? "sidebar" : "sidebar-hidden"}>
-    <a class="page-button" href="#">
-      <p>Connexion</p>
-      <img src={rightArrow} alt="" width="30px" />
-    </a>
-    <a class="page-button" href="#">
-      <p>Inscritpion</p>
-      <img src={rightArrow} alt="" width="30px" />
-    </a>
-  </nav>
 </header>
 
 <style>
   .header {
-    height: 8vh;
+    height: 6vh;
     width: 100vw;
     background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 1200px;
     position: relative;
-    border-bottom: 2px solid #f5f5f5;
     z-index: 2;
   }
 
-  .nav-button {
-    padding-left: 2rem;
-    width: 15%;
+  .sidebar-button {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  .sidebar,
-  .sidebar-hidden {
+  .avatar {
+    padding: 0.25rem;
+    background-color: #e5e4e2;
+    border-radius: 100px;
+    width: 20px;
+  }
+
+  .downArrow {
+    transform: rotate(90deg);
+    transition: transform 0.25s ease-in-out;
+    width: 20px;
+  }
+
+  .upArrow {
+    transform: rotate(270deg);
+    transition: transform 0.25s ease-in-out;
+    width: 20px;
+  }
+
+  .header-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    gap: 0.25rem;
+  }
+
+  .nav,
+  .nav-hidden {
     display: flex;
     flex-direction: column;
-    background-color: red;
+    background-color: #fff;
     left: 0;
-    width: 60%;
+    width: 25rem;
+    max-width: 25rem;
     height: 100vh;
-    padding: 0 2rem;
-    box-shadow: 5px 36px 29px 2px rgba(155,155,155,1),-25px 0px 20px -20px rgba(0,0,0,0.45);  
+    box-shadow:
+      5px 36px 29px 2px rgba(155, 155, 155, 1),
+      -25px 0px 20px -20px rgba(0, 0, 0, 0.45);
     transition: transform 0.25s ease-in-out;
-    top: 7vh;
+    top: 6.2vh;
     position: absolute;
     z-index: 1;
   }
 
-  .sidebar {
+  .nav {
     transform: translateX(0);
   }
 
-  .sidebar-hidden {
-    transform: translateX(-150%);
+  .nav-hidden {
+    transform: translateY(-250%);
   }
 
   .main-logo {
@@ -90,11 +144,9 @@
     left: 50%;
   }
 
-  .header-icons {
+  .header-right {
     display: flex;
     gap: 1rem;
-    padding-right: 2rem;
-    width: 15%;
     display: flex;
     justify-content: flex-end;
   }
@@ -109,7 +161,7 @@
     outline: inherit;
   }
 
-  .page-button {
+  .nav-button {
     color: black;
     text-decoration: none;
     font-size: 1.5rem;
@@ -120,7 +172,58 @@
     transition: 0.15s ease-in-out;
   }
 
-  .page-button:hover {
+  .nav-button:hover {
     background-color: #f5f5f5;
+  }
+
+  .nav-button > p {
+    font-size: 0.8em;
+  }
+
+  .nav-divider {
+    padding: 0.5rem 1.75rem;
+  }
+
+  .nav-divider > hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 400px) {
+    .nav,
+    .nav-hidden {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .logo-desktop {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #trip-button,
+    .nav-divider,
+    .logo-mobile {
+      display: none;
+    }
+
+    .header {
+      height: 8vh;
+    }
+    .nav,
+    .nav-hidden {
+      top: 8.2vh;
+      height: fit-content;
+    }
+
+    .avatar {
+      width: 35px;
+    }
   }
 </style>
