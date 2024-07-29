@@ -1,21 +1,63 @@
+<script>
+</script>
 
-<div class="background">
-  <h1>Welcome to BlobloCar</h1>
-</div>
+  <div class="background">
+    <div class="background-text">
+      <p>Voyagez ensemble, partagez plus qu'une route.</p>
+    </div>
+  </div>
+  
+  <div class="content"></div>
 
 <style>
+  
+  .background {
+      background-image: none;
+      background-color: black;
+      justify-content: center;
+      height: 25rem;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
 
-  h1 {
+  .background-text > p{
     color: #fff;
-    font-size: 3em;
+    font-size: 2em;
+    font-weight: 600;
+    padding: 1.5rem;    
   }
 
-  .background {
-    background-image: url('../lib/assets/voiture-montagne.jpg');
-    background-repeat: no-repeat;
+  .content {
+    height: 25rem;
+    background-color: aqua;
+  }
+
+  @media (min-width: 767px) {
+
+    .background {
+    height: 25rem;
+    overflow: hidden;
+    background-image: url("../lib/assets/homepage-homepage1.jpg");
     background-position: center;
-    transform: scale(0.75);
-    height: 18.75rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+    .background-text > p {
+      color: #fff;
+    font-size: 4em;
+    font-weight: 600;
+    padding: 1.5rem 0;
+    text-align: center;
+    max-width: 1200px;
+  }
+
   }
 </style>
-
