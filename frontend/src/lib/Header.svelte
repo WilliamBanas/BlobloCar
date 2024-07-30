@@ -20,11 +20,11 @@
       </button>
     </div>
 
-    <div class="header-left-desktop">
+    <a href="/" class="header-left-desktop" on:click={sidebar ? handleSidebar : null}>
       <img class="logo-desktop" src={logoWithText} alt="" width="200px" />
-    </div>
+    </a>
 
-    <a href="/" class="main-logo">
+    <a href="/" class="main-logo" on:click={sidebar ? handleSidebar : null}>
       <img class="logo-mobile" src={logoWithoutText} alt="" width="40px" />
     </a>
 
@@ -62,7 +62,7 @@
         <img src={arrow} alt="" width="20px" />
       </a>
       <a class="nav-button" href="#">
-        <p>Connexion</p>
+        <a class="button-login" href="/login" on:click={handleSidebar}>Connexion</a>
         <img src={arrow} alt="" width="20px" />
       </a>
     </nav>
@@ -182,6 +182,12 @@
   }
 
   .nav-button > p {
+    font-size: 0.8em;
+  }
+
+  .button-login {
+    color: black;
+    text-decoration: none;
     font-size: 0.8em;
   }
 

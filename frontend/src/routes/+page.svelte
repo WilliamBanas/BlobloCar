@@ -1,4 +1,5 @@
 <script>
+
 </script>
 
   <div class="background">
@@ -6,8 +7,10 @@
       <p>Voyagez ensemble, partagez plus qu'une route.</p>
     </div>
   </div>
-  
-  <div class="content"></div>
+    
+  <div class="content">
+
+  </div>
 
 <style>
   
@@ -17,14 +20,10 @@
       justify-content: center;
       height: 25rem;
       padding: 0 1.5rem;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      text-align: center;
-      box-sizing: border-box;
+      
     }
 
-  .background-text > p{
+  .background-text > p {
     color: #fff;
     font-size: 2em;
     font-weight: 600;
@@ -34,6 +33,10 @@
   .content {
     height: 25rem;
     background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   @media (min-width: 767px) {
