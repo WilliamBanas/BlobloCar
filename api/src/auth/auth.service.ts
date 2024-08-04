@@ -18,7 +18,7 @@ export class AuthService {
 
     // If no user is found, throw an error
     if (!user) {
-      throw new NotFoundException(`No user found for email: ${email}`);
+      throw new NotFoundException('Identifiants incorrects');
     }
 
     // Step 2: Check if the password is correct
@@ -26,7 +26,7 @@ export class AuthService {
 
     // If password does not match, throw an error
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid password');
+      throw new UnauthorizedException('Identifiants incorrects');
     }
 
     // Step 3: Generate a JWT containing the user's ID and return it
