@@ -1,6 +1,0 @@
-// Breakpoints
-@mixin lg {
-  @media (min-width: #{$screen-lg}) {
-    @content
-  };
-}
