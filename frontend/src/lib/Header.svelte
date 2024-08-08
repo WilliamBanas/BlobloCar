@@ -35,7 +35,13 @@
       <ul class="sidebar__list">
         <h3 class="sidebar__title">Trajet</h3>
         <li class="sidebar__item">
-          <a class="sidebar__link" href="#"> Nouveau trajet </a>
+          <a
+            class="sidebar__link"
+            href="#"
+            on:click={() => (sidebar ? handleSidebar() : null)}
+          >
+            Nouveau trajet
+          </a>
         </li>
       </ul>
       <div class="sidebar__divider">
@@ -53,7 +59,13 @@
           </a>
         </li>
         <li class="sidebar__item">
-          <a class="sidebar__link" href="#"> Inscription </a>
+          <a
+            class="sidebar__link"
+            href="/signup"
+            on:click={() => (sidebar ? handleSidebar() : null)}
+          >
+            Inscription
+          </a>
         </li>
       </ul>
     </div>
@@ -115,9 +127,6 @@
   .sidebar__list {
     list-style-type: none;
     padding: 0 1.5rem;
-  }
-
-  .sidebar__item {
   }
 
   .sidebar__link {
